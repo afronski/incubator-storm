@@ -36,6 +36,8 @@
     (ack! collector tuple)
     ))
 
+;; Bolt with the state (counter is a state here).
+
 (defbolt word-count ["word" "count"] {:prepare true}
   [conf context collector]
   (let [counts (atom {})]
