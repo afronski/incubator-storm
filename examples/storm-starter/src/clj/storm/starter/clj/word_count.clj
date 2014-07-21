@@ -13,6 +13,7 @@
 ;; WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ;; See the License for the specific language governing permissions and
 ;; limitations under the License.
+
 (ns storm.starter.clj.word-count
   (:import [backtype.storm StormSubmitter LocalCluster])
   (:use [backtype.storm clojure config])
@@ -27,7 +28,7 @@
     (spout
      (nextTuple []
        (Thread/sleep 100)
-       (emit-spout! collector [(rand-nth sentences)])         
+       (emit-spout! collector [(rand-nth sentences)])
        )
      (ack [id]
         ;; You only need to define this method for reliable spouts
@@ -92,4 +93,3 @@
    (run-local!))
   ([name]
    (submit-topology! name)))
-
